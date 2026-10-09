@@ -1,52 +1,79 @@
-// 포트폴리오 내용은 모두 이 파일에서 수정합니다. (현재 값은 자리표시자입니다.)
+// 내용은 모두 이 파일에서 수정합니다. (출처: 노션 '포트폴리오_김조은', 연락처·사진은 제외)
 export const profile = {
-  name: "홍길동",
-  role: "Frontend Developer & Designer",
-  tagline: "빛과 움직임으로 경험을 설계합니다.",
+  name: "김조은",
+  role: "Sports Administration",
+  tagline: "현장을 이해하고 적극 도전하는 스포츠행정 인재",
   intro:
-    "사용자의 시선이 머무는 순간을 만드는 일을 좋아합니다. 여기에 한두 문장으로 자기소개를 적어주세요.",
-  email: "hello@example.com",
+    "스포츠 공공기관 스포츠행정을 1순위 목표로, 현장 운영 경험과 스포츠산업 이해, 데이터 활용 역량을 연결해 실무형 인재로 성장하고 있습니다.",
 };
 
 export const stats = [
-  { value: 3, suffix: "+", label: "년 경력" },
-  { value: 12, suffix: "", label: "완료한 프로젝트" },
-  { value: 5, suffix: "", label: "협업 팀" },
+  { value: 67, suffix: "명", label: "배드민턴 대회 운영진" },
+  { value: 25, suffix: "개", label: "참가 대학" },
+  { value: 285, suffix: "명", label: "참가 신청" },
+  { value: 60, suffix: "만+", label: "해커톤 정제 데이터(행)" },
 ];
 
-export const projects = [
+export const highlights = [
   {
-    title: "프로젝트 이름 01",
-    desc: "프로젝트를 한 줄로 설명하세요. 문제, 역할, 결과를 담으면 좋습니다.",
-    tags: ["React", "Motion", "TypeScript"],
-    href: "#",
+    no: "01",
+    title: "전국 대학 배드민턴 대회",
+    role: "공동 조직위원장",
+    metric: "67명 운영진 · 25개 대학 · 285명 참가 신청",
+    tags: ["행사 운영", "조직관리", "참가자 관리"],
   },
   {
-    title: "프로젝트 이름 02",
-    desc: "프로젝트를 한 줄로 설명하세요. 문제, 역할, 결과를 담으면 좋습니다.",
-    tags: ["Next.js", "Design System"],
-    href: "#",
+    no: "02",
+    title: "KSPO 스포츠데이터 해커톤",
+    role: "데이터 분석 · 서비스 기획 · AI 활용",
+    metric: "60만+ 행 데이터 정제 · 예선 1위",
+    tags: ["공공데이터", "헬스케어 서비스", "데이터 기반 기획"],
   },
   {
-    title: "프로젝트 이름 03",
-    desc: "프로젝트를 한 줄로 설명하세요. 문제, 역할, 결과를 담으면 좋습니다.",
-    tags: ["UI/UX", "Prototyping"],
-    href: "#",
+    no: "03",
+    title: "서울 이랜드 FC 씽크필더",
+    role: "프로모션 기획 · 현장 운영 · 성과 측정",
+    metric: "대학생 타깃 · 홈경기 · 유입/전환 분석",
+    tags: ["프로모션", "현장 운영", "성과 측정"],
   },
 ];
 
-export const skills = [
-  "React",
-  "TypeScript",
-  "Motion",
-  "CSS / Tailwind",
-  "Figma",
-  "Accessibility",
-  "Node.js",
-  "Git",
+export const activities = [
+  {
+    title: "대한컬링연맹 대회운영팀 인턴",
+    desc: "대회 운영 및 실적 등록·발급, 사업 계획서(안) 작성 및 예산안 편성, 국제 심판 강습회 대상자 업무 정리",
+  },
+  {
+    title: "서울 이랜드 FC 대학생 마케터 ‘씽크필더’ 11기",
+    desc: "홈경기 운영, 프로모션 기획, 성과 측정 및 피드백 도출",
+  },
+  {
+    title: "2026년 KSPO 스포츠 예비인재 교육과정 수료",
+    desc: "스포츠행정 · 데이터 분석 · AI 활용 · 팀 프로젝트 수행",
+  },
+  {
+    title: "전국 대학 배드민턴 대회 공동 조직위원장",
+    desc: "전국 규모 대회의 기획·운영과 7개 부서 총괄(경기운영·마케팅·홍보·이벤트·DB·의전·회계). 역대 대회 최초 방송 중계기업 타이틀 스폰서 체결 및 대회 당일 중계 방송 진행",
+  },
+  {
+    title: "2024 충청남도 대학스포츠 대제전 배드민턴 경기운영팀장",
+    desc: "충청남도 체육회 주최 · 단국대학교 스포츠경영학과 주관. 참가자 모집·관리, 대진표 제작 및 현장 통제, 스폰서 물품 총괄·배부, 예산 관리",
+  },
 ];
 
-export const links = [
-  { label: "GitHub", href: "https://github.com/jomene0909" },
-  { label: "Email", href: "mailto:hello@example.com" },
+export const competencies = [
+  { area: "스포츠행정", items: ["사업 기획", "행사 운영", "조직관리", "공공행정"] },
+  { area: "스포츠마케팅", items: ["프로모션", "홍보", "관람객 유입", "성과 측정"] },
+  { area: "데이터 · AI", items: ["데이터 정제", "분석", "AI 활용", "문제 해결"] },
 ];
+
+export const certificates = [
+  { name: "컴퓨터활용능력 1급", done: true },
+  { name: "한국사능력검정 1급", done: true },
+  { name: "실용글쓰기 준2급 이상", done: false },
+  { name: "데이터분석준전문가(ADsP)", done: false },
+  { name: "TOEIC SPEAKING IH 이상", done: false },
+  { name: "스포츠경영관리사 (2027년 도전)", done: false },
+];
+
+export const flow = ["운영 경험", "기획 역량", "데이터 기반 개선", "스포츠행정"];

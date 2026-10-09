@@ -9,10 +9,10 @@ export default function Nav() {
     <nav className="nav glass" aria-label="주요 메뉴">
       <a href="#top" className="brand">{profile.name}</a>
       <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">소개</a></li>
+        <li><a href="#work">성과</a></li>
+        <li><a href="#activities">활동</a></li>
+        <li><a href="#skills">역량</a></li>
       </ul>
       <motion.span className="progress" style={{ scaleX }} aria-hidden="true" />
     </nav>

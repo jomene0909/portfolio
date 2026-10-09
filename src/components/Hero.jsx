@@ -38,8 +38,8 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5, ease }}
         >
-          <a className="btn btn-primary" href="#work">프로젝트 보기</a>
-          <a className="btn btn-glass" href="#contact">연락하기</a>
+          <a className="btn btn-primary" href="#work">주요 성과 보기</a>
+          <a className="btn btn-glass" href="#activities">주요 활동</a>
         </motion.div>
       </motion.div>
 

@@ -19,7 +19,7 @@ function Counter({ value, suffix }) {
     return () => controls.stop();
   }, [inView, value, suffix]);
 
-  return <span ref={ref}>0{suffix}</span>;
+  return <span ref={ref}>{value + suffix}</span>;
 }
 
 export default function About() {

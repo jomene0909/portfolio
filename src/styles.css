@@ -24,7 +24,7 @@ body {
   overflow-x: hidden;
 }
 a { color: inherit; text-decoration: none; }
-ul { list-style: none; margin: 0; padding: 0; }
+ul, ol { list-style: none; margin: 0; padding: 0; }
 h1, h2, h3, p { margin: 0; }
 :focus-visible { outline: 2px solid var(--accent-2); outline-offset: 3px; border-radius: 6px; }
 
@@ -54,7 +54,6 @@ h1, h2, h3, p { margin: 0; }
   transform-origin: 0 50%;
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
 }
-@media (max-width: 520px) { .nav ul li:nth-child(3) { display: none; } }
 
 /* Hero */
 .hero {
@@ -75,8 +74,8 @@ h1, h2, h3, p { margin: 0; }
   color: var(--accent-2); margin-bottom: 20px;
 }
 h1 {
-  font-family: var(--font-display); font-weight: 700; line-height: 1.02;
-  font-size: clamp(3rem, 11vw, 8rem); letter-spacing: -0.03em;
+  font-family: var(--font-display); font-weight: 700; line-height: 1.05;
+  font-size: clamp(3.2rem, 11vw, 8rem); letter-spacing: -0.03em;
   background: linear-gradient(180deg, #fff 30%, #9aa0c0 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
@@ -111,7 +110,7 @@ h2 {
 }
 #about h2 { max-width: 30ch; font-weight: 500; color: #dfe2f2; }
 
-.stats { margin-top: 56px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+.stats { margin-top: 56px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
 .stat { padding: 28px; display: flex; flex-direction: column; gap: 4px; }
 .stat strong { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 1; }
 .stat > span { color: var(--muted); font-size: 0.95rem; }
@@ -128,12 +127,6 @@ h2 {
 .chips { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 12px; }
 .chip { padding: 12px 22px; border-radius: 999px; font-weight: 500; }
 
-.contact-card { margin-top: 48px; padding: clamp(28px, 5vw, 56px); display: flex; flex-direction: column; gap: 24px; align-items: flex-start; }
-.mail { font-family: var(--font-display); font-size: clamp(1.4rem, 4vw, 2.6rem); font-weight: 600; word-break: break-all;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.links { display: flex; gap: 20px; color: var(--muted); }
-.links a { padding: 6px 0; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
-.links a:hover { color: var(--fg); border-color: var(--accent-2); }
 footer { margin-top: 96px; text-align: center; color: var(--muted); font-size: 0.85rem; }
 
 @media (prefers-reduced-motion: reduce) {
@@ -152,3 +145,22 @@ body::before {
     radial-gradient(40vmax 40vmax at 85% 30%, rgba(139, 92, 246, 0.16), transparent 70%),
     radial-gradient(35vmax 35vmax at 10% 75%, rgba(34, 211, 238, 0.11), transparent 70%);
 }
+
+/* 활동 · 역량 · 진로 */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.card .role { color: var(--fg); font-weight: 500; flex: 0; }
+.card .metric { color: var(--accent-2); font-weight: 500; }
+.comp { min-height: 0; }
+.timeline { margin-top: 56px; display: grid; gap: 16px; list-style: none; padding: 0; }
+.activity { padding: 26px 30px; }
+.activity h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; }
+.activity p { margin-top: 8px; color: var(--muted); }
+.sub-h { margin-top: 96px; font-size: clamp(1.4rem, 3vw, 2rem); }
+.chip { display: inline-flex; gap: 10px; align-items: center; }
+.chip.done { border-color: rgba(34, 211, 238, 0.5); }
+.chip.done > span:first-child { color: var(--accent-2); }
+.chip.todo { color: var(--muted); }
+.flow-card { margin-top: 48px; padding: clamp(24px, 4vw, 44px); }
+.flow { display: flex; flex-wrap: wrap; gap: 12px 8px; align-items: center; font-family: var(--font-display); font-size: clamp(1.1rem, 2.6vw, 1.7rem); font-weight: 600; }
+.flow li:not(:last-child)::after { content: "→"; margin-left: 12px; color: var(--accent-2); }
+.flow li:last-child { background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }

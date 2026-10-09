@@ -1,4 +1,4 @@
-import { flow } from "../content.js";
+import { contact, flow } from "../content.js";
 import Reveal from "./Reveal.jsx";
 
 export default function Direction() {
@@ -11,6 +11,12 @@ export default function Direction() {
           {flow.map((f) => <li key={f}>{f}</li>)}
         </ol>
       </Reveal>
+
+      <Reveal as="h2" delay={0.05} className="sub-h" id="contact">Contact</Reveal>
+      <Reveal delay={0.15} className="glass contact-card">
+        <a className="mail" href={`mailto:${contact.email}`}>{contact.email}</a>
+      </Reveal>
+
       <footer>© {new Date().getFullYear()} 김조은</footer>
     </section>
   );

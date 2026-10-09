@@ -77,3 +77,5 @@ export const certificates = [
 ];
 
 export const flow = ["운영 경험", "기획 역량", "데이터 기반 개선", "스포츠행정"];
+
+export const contact = { email: "jomene0909@naver.com" };

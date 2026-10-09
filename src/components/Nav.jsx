@@ -13,6 +13,7 @@ export default function Nav() {
         <li><a href="#work">성과</a></li>
         <li><a href="#activities">활동</a></li>
         <li><a href="#skills">역량</a></li>
+        <li><a href="#contact">연락</a></li>
       </ul>
       <motion.span className="progress" style={{ scaleX }} aria-hidden="true" />
     </nav>

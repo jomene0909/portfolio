@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>대한컬링연맹 | Korea Curling Federation</title>
+<meta name="description" content="얼음 위의 전략, 한 치의 오차 없는 정밀함. 대한컬링연맹을 소개합니다.">
+<meta name="theme-color" content="#05080f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23c8102e'/%3E%3Ccircle cx='32' cy='32' r='20' fill='%23fff'/%3E%3Ccircle cx='32' cy='32' r='10' fill='%231b4fd8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05080f; --bg2:#0a1020; --ink:#eaf2ff; --mute:#8fa3c2;
+  --ice:#8fd3ff; --blue:#2f6bff; --red:#e0173a;
+  --glass:rgba(255,255,255,.055); --glass-b:rgba(255,255,255,.14);
+  --serif:"Cormorant Garamond",serif; --sans:"Noto Sans KR",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+.eyebrow{font-size:.75rem;letter-spacing:.32em;text-transform:uppercase;color:var(--ice);font-weight:500}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.15;margin:.6rem 0 1rem}
+h2 em{font-style:italic;color:var(--ice)}
+.lead{color:var(--mute);max-width:56ch;font-weight:300}
+section{position:relative;padding:clamp(80px,12vw,150px) 0}
+
+/* progress + nav */
+#bar{position:fixed;inset:0 auto auto 0;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--blue),var(--ice),var(--red));z-index:100}
+nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:90;width:min(960px,100% - 24px);
+  display:flex;align-items:center;justify-content:space-between;padding:10px 12px 10px 20px;border-radius:999px;
+  background:rgba(10,16,32,.5);border:1px solid var(--glass-b);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:.95rem;letter-spacing:.02em}
+.logo i{width:22px;height:22px;border-radius:50%;background:radial-gradient(circle,var(--blue) 0 28%,#fff 29% 58%,var(--red) 59%)}
+nav ul{display:flex;gap:26px;list-style:none;font-size:.85rem;color:var(--mute)}
+nav ul a:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:999px;font-weight:500;font-size:.88rem;border:1px solid var(--glass-b);transition:.3s;cursor:pointer;background:none;color:var(--ink);font-family:inherit}
+.btn.primary{background:linear-gradient(135deg,var(--blue),#5aa0ff);border-color:transparent;box-shadow:0 8px 30px -8px var(--blue)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 36px -8px var(--blue)}
+.btn.ghost:hover{background:var(--glass)}
+@media(max-width:760px){nav ul{display:none}}
+
+/* hero */
+#hero{min-height:100svh;display:grid;place-items:center;text-align:center;padding:120px 0 80px;overflow:hidden}
+.ice{position:absolute;inset:0;z-index:0;
+  background:
+   radial-gradient(60% 50% at 50% 38%,rgba(47,107,255,.28),transparent 70%),
+   radial-gradient(40% 30% at 20% 80%,rgba(224,23,58,.14),transparent 70%),
+   linear-gradient(180deg,#050912,#08142b 60%,#05080f)}
+.house{position:absolute;left:50%;top:48%;width:min(120vw,1100px);aspect-ratio:1;transform:translate(-50%,-50%);opacity:.5;z-index:0}
+.house circle{fill:none;stroke-width:1.4}
+.lines{position:absolute;inset:0;background:
+  repeating-linear-gradient(90deg,transparent 0 119px,rgba(143,211,255,.05) 119px 120px);
+  mask-image:radial-gradient(70% 70% at 50% 45%,#000,transparent);-webkit-mask-image:radial-gradient(70% 70% at 50% 45%,#000,transparent);z-index:0}
+canvas#snow{position:absolute;inset:0;z-index:1;pointer-events:none}
+.hero-in{position:relative;z-index:2}
+.hero-in h1{font-family:var(--serif);font-weight:600;font-size:clamp(3rem,10.5vw,8.6rem);line-height:.98;letter-spacing:-.01em;margin:1.2rem 0 1.4rem}
+.hero-in h1 .line{display:block;overflow:hidden;padding-bottom:.08em}
+.hero-in h1 .line span{display:inline-block}
+.hero-in h1 .ko{font-family:var(--sans);font-weight:900;font-size:.46em;letter-spacing:.06em;color:var(--ice)}
+.hero-in p{color:var(--mute);font-weight:300;max-width:46ch;margin:0 auto 2.2rem;font-size:clamp(1rem,1.7vw,1.2rem)}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.stone{position:absolute;z-index:1;left:50%;bottom:-17%;width:clamp(120px,16vw,210px);margin-left:calc(clamp(120px,16vw,210px) / -2);filter:drop-shadow(0 30px 40px rgba(0,0,0,.6))}
+.scroll-cue{position:absolute;bottom:26px;left:max(20px,4vw);z-index:3;font-size:.68rem;letter-spacing:.3em;color:var(--mute);display:flex;flex-direction:column;align-items:center;gap:10px}
+.scroll-cue b{width:1px;height:40px;background:linear-gradient(var(--ice),transparent);animation:cue 2s infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* glass */
+.glass{background:var(--glass);border:1px solid var(--glass-b);border-radius:24px;backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 24px 60px -30px rgba(0,0,0,.8);position:relative;overflow:hidden}
+.glass::before{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%),rgba(143,211,255,.14),transparent 60%);opacity:0;transition:opacity .4s;pointer-events:none}
+.glass:hover::before{opacity:1}
+
+/* about / stats */
+.split{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(30px,6vw,90px);align-items:center}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stat{padding:28px 24px}
+.stat strong{display:block;font-family:var(--serif);font-size:clamp(2.4rem,5vw,3.6rem);line-height:1;color:#fff}
+.stat span{color:var(--mute);font-size:.82rem}
+@media(max-width:860px){.split{grid-template-columns:1fr}}
+
+/* marquee */
+.marquee{overflow:hidden;border-block:1px solid rgba(255,255,255,.08);padding:22px 0;background:rgba(255,255,255,.015)}
+.marquee div{display:flex;gap:56px;white-space:nowrap;width:max-content;font-family:var(--serif);font-style:italic;font-size:clamp(1.6rem,3.4vw,2.6rem);color:rgba(234,242,255,.35);animation:mq 38s linear infinite}
+.marquee b{color:var(--red);font-style:normal}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* spirit cards */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:3rem}
+.card{padding:34px 28px 36px}
+.card .n{font-family:var(--serif);font-size:1rem;color:var(--ice);letter-spacing:.2em}
+.card h3{font-size:1.35rem;margin:14px 0 8px;font-weight:700}
+.card p{color:var(--mute);font-size:.94rem;font-weight:300}
+.card svg{width:44px;height:44px;margin-top:22px;stroke:var(--ice);fill:none;stroke-width:1.4}
+@media(max-width:860px){.grid3{grid-template-columns:1fr}}
+
+/* timeline */
+#timeline{background:linear-gradient(180deg,var(--bg),var(--bg2),var(--bg))}
+.tl{position:relative;margin-top:3.4rem;padding-left:34px}
+.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:1px;background:rgba(255,255,255,.12)}
+.tl .fill{position:absolute;left:7px;top:6px;width:1px;height:calc(100% - 12px);background:linear-gradient(var(--ice),var(--red));transform-origin:top;transform:scaleY(0)}
+.ev{position:relative;padding:0 0 46px}
+.ev::before{content:"";position:absolute;left:-34px;top:8px;width:15px;height:15px;border-radius:50%;background:var(--bg);border:2px solid var(--ice);box-shadow:0 0 0 6px rgba(143,211,255,.08)}
+.ev time{font-family:var(--serif);font-size:1.8rem;color:#fff}
+.ev h3{font-size:1.1rem;font-weight:500;margin:2px 0 4px}
+.ev p{color:var(--mute);font-weight:300;max-width:60ch;font-size:.95rem}
+.edit{display:inline-block;margin-top:6px;font-size:.7rem;letter-spacing:.1em;color:#f6c177;border:1px dashed rgba(246,193,119,.5);border-radius:6px;padding:1px 8px}
+
+/* events */
+.events{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:3rem}
+.evc{padding:30px;display:flex;gap:22px;align-items:flex-start}
+.date{min-width:72px;text-align:center;border-right:1px solid var(--glass-b);padding-right:20px}
+.date b{display:block;font-family:var(--serif);font-size:2.4rem;line-height:1}
+.date span{font-size:.7rem;letter-spacing:.2em;color:var(--ice)}
+.evc h3{font-weight:700;margin-bottom:4px}
+.evc p{color:var(--mute);font-size:.9rem;font-weight:300}
+@media(max-width:760px){.events{grid-template-columns:1fr}}
+
+/* CTA */
+#join{text-align:center}
+.cta-box{padding:clamp(40px,8vw,90px) 24px;background:radial-gradient(70% 120% at 50% 0%,rgba(47,107,255,.25),transparent 70%),var(--glass)}
+.cta-box .lead{margin:0 auto 2rem}
+footer{border-top:1px solid rgba(255,255,255,.08);padding:36px 0;color:var(--mute);font-size:.82rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* reveal: only hidden when JS/Motion is ready, so content never gets stuck invisible */
+.js [data-r]{opacity:0}
+@media(prefers-reduced-motion:reduce){.js [data-r]{opacity:1!important;transform:none!important}.marquee div,.scroll-cue b{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<nav>
+  <a href="#hero" class="logo"><i></i>대한컬링연맹</a>
+  <ul>
+    <li><a href="#about">연맹 소개</a></li>
+    <li><a href="#spirit">핵심 가치</a></li>
+    <li><a href="#timeline">발자취</a></li>
+    <li><a href="#events">대회·일정</a></li>
+  </ul>
+  <a href="#join" class="btn primary">함께하기</a>
+</nav>
+
+<header id="hero">
+  <div class="ice"></div>
+  <div class="lines"></div>
+  <svg class="house" viewBox="0 0 400 400" aria-hidden="true">
+    <circle cx="200" cy="200" r="190" stroke="#2f6bff" opacity=".55"/>
+    <circle cx="200" cy="200" r="130" stroke="#fff" opacity=".35"/>
+    <circle cx="200" cy="200" r="70" stroke="#e0173a" opacity=".6"/>
+    <circle cx="200" cy="200" r="18" stroke="#8fd3ff" opacity=".7"/>
+    <line x1="200" y1="0" x2="200" y2="400" stroke="#8fd3ff" stroke-opacity=".2"/>
+    <line x1="0" y1="200" x2="400" y2="200" stroke="#8fd3ff" stroke-opacity=".2"/>
+  </svg>
+  <canvas id="snow"></canvas>
+
+  <div class="wrap hero-in">
+    <div class="eyebrow" data-h>Korea Curling Federation</div>
+    <h1>
+      <span class="line"><span data-h>Precision</span></span>
+      <span class="line"><span data-h>on <em style="font-style:italic;color:var(--ice)">Ice</em></span></span>
+      <span class="line ko"><span data-h>대한컬링연맹</span></span>
+    </h1>
+    <p data-h>얼음 위에서 펼쳐지는 가장 조용하고 치열한 전략. 한 치의 오차를 향한 도전을 우리는 함께 만듭니다.</p>
+    <div class="cta" data-h>
+      <a href="#about" class="btn primary">연맹 알아보기</a>
+      <a href="#events" class="btn ghost">대회 일정 보기</a>
+    </div>
+  </div>
+
+  <svg class="stone" id="stone" viewBox="0 0 200 200" aria-hidden="true">
+    <defs>
+      <radialGradient id="g1" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#6b7487"/><stop offset=".55" stop-color="#2a3142"/><stop offset="1" stop-color="#0c101a"/></radialGradient>
+      <radialGradient id="g2" cx="40%" cy="30%" r="70%"><stop offset="0" stop-color="#ff5b78"/><stop offset="1" stop-color="#9c0f27"/></radialGradient>
+    </defs>
+    <ellipse cx="100" cy="170" rx="82" ry="14" fill="#000" opacity=".5"/>
+    <circle cx="100" cy="100" r="86" fill="url(#g1)"/>
+    <circle cx="100" cy="100" r="86" fill="none" stroke="#9fb3d6" stroke-opacity=".35" stroke-width="2"/>
+    <circle cx="100" cy="100" r="58" fill="url(#g2)"/>
+    <circle cx="100" cy="100" r="58" fill="none" stroke="#fff" stroke-opacity=".25"/>
+    <path d="M62 90 Q100 40 138 90" stroke="#fff" stroke-opacity=".35" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <rect x="86" y="30" width="28" height="16" rx="8" fill="#1a2030" stroke="#9fb3d6" stroke-opacity=".4"/>
+  </svg>
+  <div class="scroll-cue" data-h>SCROLL<b></b></div>
+</header>
+
+<div class="marquee" aria-hidden="true"><div>
+  <span>Draw</span><b>●</b><span>Guard</span><b>●</b><span>Takeout</span><b>●</b><span>Hammer</span><b>●</b><span>Sweep!</span><b>●</b><span>The House</span><b>●</b>
+  <span>Draw</span><b>●</b><span>Guard</span><b>●</b><span>Takeout</span><b>●</b><span>Hammer</span><b>●</b><span>Sweep!</span><b>●</b><span>The House</span><b>●</b>
+</div></div>
+
+<section id="about">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow" data-r>About the Federation</div>
+      <h2 data-r>얼음 위의 <em>체스</em>,<br>그 무대를 만듭니다</h2>
+      <p class="lead" data-r>대한컬링연맹은 대한민국 컬링의 저변 확대와 선수 육성, 국제 경쟁력 강화를 위해 존재합니다. 4인 1팀이 호흡을 맞춰 스톤을 하우스 중심으로 보내는 이 종목은, 힘보다 판단과 신뢰가 승부를 가릅니다.</p>
+      <p class="lead" style="margin-top:1rem" data-r>유소년부터 엘리트, 생활체육까지 — 모든 레벨의 컬링인이 같은 얼음 위에서 성장할 수 있는 환경을 목표로 합니다.</p>
+    </div>
+    <div class="stats">
+      <div class="glass stat" data-r><strong data-count="4">0</strong><span>명이 한 팀 · 팀워크의 스포츠</span></div>
+      <div class="glass stat" data-r><strong data-count="10">0</strong><span>엔드(End)로 치르는 한 경기</span></div>
+      <div class="glass stat" data-r><strong data-count="19">0</strong><span>kg 내외 · 화강암 스톤의 무게</span></div>
+      <div class="glass stat" data-r><strong data-count="2018">0</strong><span>평창 올림픽 · 여자 대표팀 은메달</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="spirit">
+  <div class="wrap">
+    <div class="eyebrow" data-r>Core Values</div>
+    <h2 data-r>컬링을 지탱하는 <em>세 가지</em></h2>
+    <p class="lead" data-r>컬링은 심판 없이도 선수의 양심으로 진행되는 종목입니다. 연맹이 지키려는 가치도 같습니다.</p>
+    <div class="grid3">
+      <article class="glass card" data-r>
+        <div class="n">01</div><h3>정밀 Precision</h3>
+        <p>수 센티미터의 차이가 승패를 가릅니다. 훈련·분석·장비 전반에서 데이터에 기반한 정밀함을 추구합니다.</p>
+        <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="9"/><circle cx="24" cy="24" r="2"/></svg>
+      </article>
+      <article class="glass card" data-r>
+        <div class="n">02</div><h3>신뢰 Trust</h3>
+        <p>스킵의 콜, 스위퍼의 호흡. 서로를 믿는 팀이 얼음을 지배합니다. 선수와 지도자, 연맹 사이의 신뢰를 쌓습니다.</p>
+        <svg viewBox="0 0 48 48"><circle cx="17" cy="24" r="11"/><circle cx="31" cy="24" r="11"/></svg>
+      </article>
+      <article class="glass card" data-r>
+        <div class="n">03</div><h3>스피릿 Spirit of Curling</h3>
+        <p>상대를 존중하고 규칙을 지키며 좋은 샷에 박수를 보내는 정신. 승리보다 먼저 지켜야 할 컬링의 전통입니다.</p>
+        <svg viewBox="0 0 48 48"><path d="M24 6l5 12 13 1-10 8 3 13-11-7-11 7 3-13-10-8 13-1z"/></svg>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="timeline">
+  <div class="wrap split" style="align-items:start">
+    <div style="position:sticky;top:120px">
+      <div class="eyebrow" data-r>Milestones</div>
+      <h2 data-r>걸어온 <em>길</em>,<br>나아갈 길</h2>
+      <p class="lead" data-r>연맹의 주요 이정표입니다. 표시된 항목은 공식 자료로 교체해 주세요.</p>
+    </div>
+    <div class="tl" id="tl">
+      <div class="fill" id="tlfill"></div>
+      <div class="ev" data-r><time>연맹 창립</time><h3>대한민국 컬링의 출발</h3><p>창립 연도와 초기 활동을 기재하세요.</p><span class="edit">공식 자료로 교체</span></div>
+      <div class="ev" data-r><time>국제 무대 진출</time><h3>세계컬링연맹(WCF) 가입 및 국제대회 참가</h3><p>세계선수권, 아시아·태평양선수권 등 첫 참가 이력을 기재하세요.</p><span class="edit">공식 자료로 교체</span></div>
+      <div class="ev" data-r><time>2018</time><h3>평창 동계올림픽 · 여자 컬링 은메달</h3><p>한국 컬링 사상 첫 올림픽 메달. 컬링이 전국민의 관심을 받는 계기가 되었습니다.</p></div>
+      <div class="ev" data-r><time>오늘</time><h3>저변 확대와 차세대 육성</h3><p>유소년 클럽, 지도자 교육, 전용 경기장 확충으로 다음 세대를 준비합니다.</p><span class="edit">공식 자료로 교체</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="events">
+  <div class="wrap">
+    <div class="eyebrow" data-r>Competitions</div>
+    <h2 data-r>다가오는 <em>무대</em></h2>
+    <div class="events">
+      <div class="glass evc" data-r><div class="date"><b>00</b><span>MON</span></div><div><h3>전국 컬링 선수권대회</h3><p>일정·장소를 입력하세요. 엘리트 팀의 국내 최고 무대.</p></div></div>
+      <div class="glass evc" data-r><div class="date"><b>00</b><span>MON</span></div><div><h3>국가대표 선발전</h3><p>일정·장소를 입력하세요. 세계선수권 출전권을 향한 경쟁.</p></div></div>
+      <div class="glass evc" data-r><div class="date"><b>00</b><span>MON</span></div><div><h3>유소년 컬링 페스티벌</h3><p>일정·장소를 입력하세요. 처음 스톤을 던져 보는 날.</p></div></div>
+      <div class="glass evc" data-r><div class="date"><b>00</b><span>MON</span></div><div><h3>지도자·심판 교육 과정</h3><p>일정·장소를 입력하세요. 현장을 지탱하는 사람들을 위한 과정.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="join">
+  <div class="wrap">
+    <div class="glass cta-box" data-r>
+      <div class="eyebrow">Join the Ice</div>
+      <h2>다음 스톤은 <em>당신</em>의 차례입니다</h2>
+      <p class="lead">선수 등록, 클럽 가입, 지도자 과정, 후원 및 제휴 문의를 기다립니다.</p>
+      <div class="cta">
+        <a href="mailto:info@example.org" class="btn primary">문의하기</a>
+        <a href="#hero" class="btn ghost">처음으로 ↑</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <span>© Korea Curling Federation · 대한컬링연맹</span>
+  <span>주소·연락처·SNS 링크를 입력하세요</span>
+</div></footer>
+
+<script type="module">
+document.documentElement.classList.add('js');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* snow / ice dust (canvas, independent of Motion) */
+const cv = document.getElementById('snow'), cx = cv.getContext('2d');
+let W, H, P = [];
+function size(){ W = cv.width = cv.offsetWidth; H = cv.height = cv.offsetHeight;
+  P = Array.from({length: Math.min(90, W/14|0)}, () => ({x:Math.random()*W, y:Math.random()*H, r:Math.random()*1.8+.4, v:Math.random()*.35+.1, a:Math.random()*.5+.15})); }
+function tick(){ cx.clearRect(0,0,W,H);
+  for (const p of P){ p.y += p.v; p.x += Math.sin(p.y/60)*.15; if (p.y > H) { p.y = -4; p.x = Math.random()*W; }
+    cx.beginPath(); cx.arc(p.x,p.y,p.r,0,6.283); cx.fillStyle = `rgba(200,230,255,${p.a})`; cx.fill(); }
+  if (!reduce) requestAnimationFrame(tick); }
+size(); addEventListener('resize', size); tick();
+
+/* glass spotlight follows pointer */
+document.querySelectorAll('.glass').forEach(el => el.addEventListener('pointermove', e => {
+  const b = el.getBoundingClientRect(); el.style.setProperty('--mx', (e.clientX-b.left)+'px'); el.style.setProperty('--my', (e.clientY-b.top)+'px'); }));
+
+try {
+  const { animate, scroll, inView, stagger } = await import('https://cdn.jsdelivr.net/npm/motion@11.11.17/+esm');
+  if (reduce) throw 0;
+
+  /* hero intro */
+  animate('[data-h]', { opacity:[0,1], y:[40,0] }, { duration:1.1, delay:stagger(.12, {startDelay:.15}), ease:[.16,1,.3,1] });
+  animate('#stone', { y:[200,0], rotate:[-40,0], opacity:[0,1] }, { duration:1.8, delay:.5, ease:[.16,1,.3,1] });
+  animate('.house', { scale:[.7,1], opacity:[0,.5] }, { duration:2.2, ease:[.16,1,.3,1] });
+
+  /* scroll-linked: progress bar, hero parallax, stone glide, timeline fill */
+  scroll(animate('#bar', { scaleX:[0,1] }, { ease:'linear' }));
+  scroll(animate('.hero-in', { y:[0,-120], opacity:[1,0] }, { ease:'linear' }), { target: document.getElementById('hero'), offset:['start start','end start'] });
+  scroll(animate('.house', { scale:[1,1.5], rotate:[0,30] }, { ease:'linear' }), { target: document.getElementById('hero'), offset:['start start','end start'] });
+  scroll(animate('#stone', { y:[0,-380], x:[0,160], rotate:[0,260] }, { ease:'linear' }), { target: document.getElementById('hero'), offset:['start start','end start'] });
+  scroll(animate('#tlfill', { scaleY:[0,1] }, { ease:'linear' }), { target: document.getElementById('tl'), offset:['start 70%','end 60%'] });
+
+  /* reveal on view */
+  inView('[data-r]', el => { animate(el, { opacity:[0,1], y:[48,0] }, { duration:.9, ease:[.16,1,.3,1] }); }, { margin:'0px 0px -12% 0px' });
+
+  /* count-up */
+  inView('[data-count]', el => { const to = +el.dataset.count;
+    animate(0, to, { duration:2, ease:[.16,1,.3,1], onUpdate: v => el.textContent = Math.round(v) }); });
+} catch (e) {
+  /* CDN blocked / reduced motion: show everything, static values */
+  document.documentElement.classList.remove('js');
+  document.querySelectorAll('[data-count]').forEach(el => el.textContent = el.dataset.count);
+  document.getElementById('tlfill').style.transform = 'scaleY(1)';
+}
+</script>
+</body>
+</html>
